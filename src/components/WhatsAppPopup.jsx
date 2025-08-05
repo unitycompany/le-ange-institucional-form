@@ -318,8 +318,12 @@ const WhatsAppPopup = ({ isOpen, onClose, originalWhatsAppUrl }) => {
         try {
             const utmParams = getUTMParams();
 
+            // Converter telefone para formato internacional: 5521999181950
+            const phoneNumbers = phone.replace(/\D/g, '');
+            const internationalPhone = `55${phoneNumbers}`;
+
             const formData = {
-                telefone: phone,
+                telefone: internationalPhone,
                 timestamp: new Date().toISOString(),
                 fonte: 'WhatsApp Popup',
                 url_origem: window.location.href,
