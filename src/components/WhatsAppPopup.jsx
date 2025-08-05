@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { FaTimes, FaWhatsapp } from 'react-icons/fa';
+import { IoCloseOutline } from 'react-icons/io5';
 
 const PopupOverlay = styled.div`
   position: fixed;
@@ -24,7 +25,7 @@ const PopupOverlay = styled.div`
 
 const PopupContainer = styled.div`
   background: white;
-  border-radius: 16px;
+  border-radius: 8px;
   padding: 32px;
   max-width: 400px;
   width: 90%;
@@ -71,18 +72,18 @@ const CloseButton = styled.button`
 `;
 
 const PopupHeader = styled.div`
-  text-align: center;
+  text-align: left;
   margin-bottom: 24px;
 
   h2 {
     color: #333;
     font-family: var(--font--comfortaa);
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 8px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
     gap: 8px;
 
     @media (max-width: 768px) {
@@ -92,6 +93,7 @@ const PopupHeader = styled.div`
 
   p {
     color: #666;
+    font-weight: 300;
     font-size: 14px;
     line-height: 1.4;
     margin: 0;
@@ -117,7 +119,7 @@ const InputGroup = styled.div`
 
 const Label = styled.label`
   font-family: var(--font--comfortaa);
-  font-weight: 500;
+  font-weight: 400;
   color: #333;
   font-size: 13px;
 `;
@@ -125,11 +127,12 @@ const Label = styled.label`
 const PhoneInput = styled.input`
   padding: 12px 16px;
   border: 1px solid #d1d5db;
-  border-radius: 8px;
+  border-radius: 3px;
   font-size: 16px;
+  font-weight: 200;
   font-family: var(--font--comfortaa);
   transition: all 0.2s ease;
-  background-color: #fafafa;
+  background-color: #f9f9f9;
 
   &:focus {
     outline: none;
@@ -159,7 +162,7 @@ const CheckboxInput = styled.input`
   height: 16px;
   margin-top: 1px;
   cursor: pointer;
-  accent-color: #25d366;
+  accent-color: var(--color--green);
 `;
 
 const CheckboxLabel = styled.label`
@@ -171,7 +174,7 @@ const CheckboxLabel = styled.label`
   font-family: var(--font--comfortaa);
 
   a {
-    color: #25d366;
+    color: var(--color--green);
     text-decoration: none;
     font-weight: 500;
 
@@ -192,7 +195,7 @@ const SubmitButton = styled.button`
   padding: 14px 20px;
   border-radius: 8px;
   font-family: var(--font--comfortaa);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 14px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -384,12 +387,11 @@ const WhatsAppPopup = ({ isOpen, onClose, originalWhatsAppUrl }) => {
         <PopupOverlay onClick={(e) => e.target === e.currentTarget && onClose()}>
             <PopupContainer>
                 <CloseButton onClick={onClose} type="button">
-                    <FaTimes />
+                    <IoCloseOutline />
                 </CloseButton>
 
                 <PopupHeader>
                     <h2>
-                        <FaWhatsapp />
                         Fale Conosco
                     </h2>
                     <p>Para melhor atendimento, informe seu telefone</p>

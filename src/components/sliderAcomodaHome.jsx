@@ -270,7 +270,7 @@ const SliderAcomodaHome = ({
                   ))}
                 </Features>
                 <ButtonAcomoda
-                  idBtn="clickwpp"
+                  idBtn="conhecerAcomodacao"
                   onClick={() => {
                     const [location, suiteNumber] = item.id.split('#suite');
                     const routeMap = {
