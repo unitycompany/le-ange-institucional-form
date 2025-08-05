@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { AnimatePresence, motion } from 'framer-motion';
 import { Analytics } from "@vercel/analytics/react"
+import { useGlobalWhatsAppInterceptor } from './hooks/useGlobalWhatsAppInterceptor';
 
 import './styles/App.css';
 import './styles/global.css';
@@ -159,6 +160,9 @@ function AnimatedRoutes() {
 
 function AppContent() {
     const location = useLocation();
+
+    // Ativa o interceptor global de WhatsApp
+    useGlobalWhatsAppInterceptor();
 
     // Estado para controlar o popup de imagem
     const [showImagePopup, setShowImagePopup] = React.useState(false);

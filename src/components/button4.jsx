@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { MdHotel } from "react-icons/md";
 import { LuMousePointerClick } from "react-icons/lu";
+import { useWhatsAppContext } from "../contexts/WhatsAppContext";
 
 const ButtonContainer = styled.button`
   position: relative;
@@ -67,19 +68,19 @@ const IconButton = ({
   hoverTextColor,
   idBtn = "clickwpp",
 }) => {
+  const { handleWhatsAppClick } = useWhatsAppContext();
+
   const handleClick = (event) => {
     console.log("Botão clicado com id:", event.currentTarget.id);
     console.log("Evento:", event);
     console.log("Elemento alvo (target):", event.target);
     console.log("Elemento atual (currentTarget):", event.currentTarget);
-    console.log("Abrindo link do WhatsApp...");
-    
-    event.stopPropagation(); 
+    console.log("Abrindo popup do WhatsApp...");
 
-    window.open(
-      "https://tintim.link/whatsapp/85d10962-4e7e-4f65-9a44-898be828e6fd/76dadedc-00f5-4a34-a4b0-c2052c540329",
-      "_blank"
-    );
+    event.stopPropagation();
+
+    const whatsappUrl = "https://tintim.link/whatsapp/85d10962-4e7e-4f65-9a44-898be828e6fd/76dadedc-00f5-4a34-a4b0-c2052c540329";
+    handleWhatsAppClick(event, whatsappUrl);
   };
 
   const handleMouseEnter = () => {
@@ -100,11 +101,11 @@ const IconButton = ({
       id={idBtn}
     >
       <DefaultButton className="default-btn" id={idBtn}>
-        <MdHotel size={15} color={textColor || 'var(--color--black)'} id={idBtn}/>
+        <MdHotel size={15} color={textColor || 'var(--color--black)'} id={idBtn} />
         <ButtonText textColor={textColor} id={idBtn}>{text}</ButtonText>
       </DefaultButton>
       <HoverButton className="hover-btn" hoverColor={hoverColor} id={idBtn}>
-        <LuMousePointerClick size={15} color={hoverTextColor || 'var(--color--white)'} id={idBtn}/>
+        <LuMousePointerClick size={15} color={hoverTextColor || 'var(--color--white)'} id={idBtn} />
         <HoverButtonText hoverTextColor={hoverTextColor} id={idBtn}>{text2}</HoverButtonText>
       </HoverButton>
     </ButtonContainer>

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { MdOutlinePets } from "react-icons/md";
+import { useWhatsAppContext } from "../contexts/WhatsAppContext";
 
 const ButtonWrapper = styled.button`
   background: ${(props) => props.backgroundColor || "transparent"};
@@ -78,8 +79,18 @@ const CustomButton = ({
   onClick,
   idBtn = "clickwpp",
 }) => {
+  const { handleWhatsAppClick } = useWhatsAppContext();
+
   const handleClick = (event) => {
     console.log("Botão clicado com id:", event.currentTarget.id);
+
+    // Se for um botão do WhatsApp, intercepta e abre o popup
+    if (idBtn === "clickwpp" || (onClick && onClick.toString().includes('whatsapp'))) {
+      const whatsappUrl = "https://tintim.link/whatsapp/85d10962-4e7e-4f65-9a44-898be828e6fd/76dadedc-00f5-4a34-a4b0-c2052c540329";
+      handleWhatsAppClick(event, whatsappUrl);
+      return;
+    }
+
     if (onClick) onClick(event);
   };
 
@@ -94,7 +105,7 @@ const CustomButton = ({
       hoverBorderColor={hoverBorderColor}
       hoverColor={hoverColor}
     >
-      <Icon iconColor={iconColor} hoverIconColor={hoverIconColor} id={idBtn}/>
+      <Icon iconColor={iconColor} hoverIconColor={hoverIconColor} id={idBtn} />
       <Text id={idBtn}>{text}</Text>
     </ButtonWrapper>
   );

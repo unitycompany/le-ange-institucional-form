@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
+import { useWhatsAppContext } from "../contexts/WhatsAppContext";
 
 const StyledButton = styled.button`
     position: relative;
@@ -96,30 +97,40 @@ const ButtonText = styled.span`
 `;
 
 const Button = ({ text, onClick, color, backgroundColor, borderColor, hoverColor, idBtn }) => {
+    const { handleWhatsAppClick } = useWhatsAppContext();
+
     const handleClick = (event) => {
-      console.log("Botão clicado com id:", event.currentTarget.id);
-      if (onClick) onClick(event);
+        console.log("Botão clicado com id:", event.currentTarget.id);
+
+        // Se for um botão do WhatsApp, intercepta e abre o popup
+        if (idBtn === "clickwpp" || (onClick && onClick.toString().includes('whatsapp'))) {
+            const whatsappUrl = "https://tintim.link/whatsapp/85d10962-4e7e-4f65-9a44-898be828e6fd/76dadedc-00f5-4a34-a4b0-c2052c540329";
+            handleWhatsAppClick(event, whatsappUrl);
+            return;
+        }
+
+        if (onClick) onClick(event);
     };
-  
+
     return (
-      <StyledButton
-        id={idBtn}
-        onClick={handleClick}
-        color={color}
-        background={backgroundColor}
-        borderColor={borderColor}
-        hoverColor={hoverColor}
-      >
-        <ArrowIcon className="arr-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" id={idBtn}/>
-        </ArrowIcon>
-        <ButtonText id={idBtn}>{text}</ButtonText>
-        <Circle id={idBtn}/>
-        <ArrowIcon className="arr-1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" id={idBtn}/>
-        </ArrowIcon>
-      </StyledButton>
+        <StyledButton
+            id={idBtn}
+            onClick={handleClick}
+            color={color}
+            background={backgroundColor}
+            borderColor={borderColor}
+            hoverColor={hoverColor}
+        >
+            <ArrowIcon className="arr-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" id={idBtn} />
+            </ArrowIcon>
+            <ButtonText id={idBtn}>{text}</ButtonText>
+            <Circle id={idBtn} />
+            <ArrowIcon className="arr-1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" id={idBtn} />
+            </ArrowIcon>
+        </StyledButton>
     );
-  };
-  
+};
+
 export default Button;

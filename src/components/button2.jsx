@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { FaArrowRight } from "react-icons/fa";
+import { useWhatsAppContext } from "../contexts/WhatsAppContext";
 
 const StyledButtonAcomodo = styled.button`
   width: auto;
@@ -46,20 +47,30 @@ const StyledButtonAcomodo = styled.button`
 `;
 
 const ButtonAcomoda = ({ text, onClick, backDefine, colorDefine, idBtn = "clickwpp" }) => {
+  const { handleWhatsAppClick } = useWhatsAppContext();
+
   const handleClick = (event) => {
     console.log("Botão clicado com id:", event.currentTarget.id);
+
+    // Se for um botão do WhatsApp, intercepta e abre o popup
+    if (idBtn === "clickwpp" || (onClick && onClick.toString().includes('whatsapp'))) {
+      const whatsappUrl = "https://tintim.link/whatsapp/85d10962-4e7e-4f65-9a44-898be828e6fd/76dadedc-00f5-4a34-a4b0-c2052c540329";
+      handleWhatsAppClick(event, whatsappUrl);
+      return;
+    }
+
     if (onClick) onClick(event);
   };
 
   return (
-    <StyledButtonAcomodo 
+    <StyledButtonAcomodo
       id={idBtn}
-      backDefine={backDefine} 
-      colorDefine={colorDefine} 
-      onClick={handleClick} 
+      backDefine={backDefine}
+      colorDefine={colorDefine}
+      onClick={handleClick}
     >
       {text}
-      <FaArrowRight className="icon" id={idBtn}/>
+      <FaArrowRight className="icon" id={idBtn} />
     </StyledButtonAcomodo>
   );
 };
