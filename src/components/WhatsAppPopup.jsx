@@ -401,11 +401,11 @@ const WhatsAppPopup = ({ isOpen, onClose, originalWhatsAppUrl }) => {
                     <p>Para melhor atendimento, informe seu telefone</p>
                 </PopupHeader>
 
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit} id='contactForm'>
                     <InputGroup>
-                        <Label htmlFor="phone">Seu telefone *</Label>
+                        <Label htmlFor="tel">Seu telefone *</Label>
                         <PhoneInput
-                            id="phone"
+                            id="tel"
                             type="text"
                             value={phone}
                             onChange={handlePhoneChange}
