@@ -126,19 +126,19 @@ const Label = styled.label`
 
 const PhoneInput = styled.input`
   padding: 12px 16px;
-  border: 1px solid #d1d5db;
+  border: 1px solid ${props => props.hasError ? '#ef4444' : '#d1d5db'};
   border-radius: 3px;
   font-size: 16px;
   font-weight: 200;
   font-family: var(--font--comfortaa);
   transition: all 0.2s ease;
-  background-color: #f9f9f9;
+  background-color: ${props => props.hasError ? '#fef2f2' : '#f9f9f9'};
 
   &:focus {
     outline: none;
-    border-color: #25d366;
+    border-color: ${props => props.hasError ? '#ef4444' : '#25d366'};
     background-color: white;
-    box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.1);
+    box-shadow: 0 0 0 3px ${props => props.hasError ? 'rgba(239, 68, 68, 0.1)' : 'rgba(37, 211, 102, 0.1)'};
   }
 
   &::placeholder {
@@ -215,9 +215,16 @@ const SubmitButton = styled.button`
   }
 
   &:disabled {
-    opacity: 0.6;
+    opacity: 0.4;
     cursor: not-allowed;
     transform: none;
+    background: #ccc;
+    
+    &:hover {
+      transform: none;
+      box-shadow: none;
+      background: #ccc;
+    }
   }
 
   @media (max-width: 768px) {
@@ -232,6 +239,13 @@ const ErrorMessage = styled.p`
   margin: 4px 0 0 0;
   font-weight: 500;
   font-family: var(--font--comfortaa);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  
+  @media (max-width: 768px) {
+    font-size: 11px;
+  }
 `;
 
 const WhatsAppPopup = ({ isOpen, onClose, originalWhatsAppUrl }) => {
@@ -239,6 +253,12 @@ const WhatsAppPopup = ({ isOpen, onClose, originalWhatsAppUrl }) => {
   const [lgpdAccepted, setLgpdAccepted] = useState(false);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Função para verificar se o formulário é válido
+  const isFormValid = () => {
+    const phoneError = validatePhone(phone);
+    return phone.trim() && !phoneError && lgpdAccepted;
+  };
 
   // Formatação do telefone brasileiro padrão (XX) XXXXX-XXXX
   const formatPhoneNumber = (value) => {
@@ -255,7 +275,11 @@ const WhatsAppPopup = ({ isOpen, onClose, originalWhatsAppUrl }) => {
     const formatted = formatPhoneNumber(e.target.value);
     setPhone(formatted);
 
-    if (errors.phone) {
+    // Validação em tempo real - mostra erros conforme o usuário digita
+    const phoneError = validatePhone(formatted);
+    if (formatted.trim() && phoneError) {
+      setErrors(prev => ({ ...prev, phone: phoneError }));
+    } else {
       setErrors(prev => ({ ...prev, phone: '' }));
     }
   };
@@ -263,20 +287,31 @@ const WhatsAppPopup = ({ isOpen, onClose, originalWhatsAppUrl }) => {
   const validatePhone = (phoneNumber) => {
     const numbers = phoneNumber.replace(/\D/g, '');
 
-    if (numbers.length !== 11) {
-      return 'Telefone deve ter 11 dígitos (DDD + número)';
+    // Se não tem números suficientes
+    if (numbers.length === 0) {
+      return null; // Não mostra erro se vazio
     }
 
+    if (numbers.length < 11) {
+      return `Faltam ${11 - numbers.length} dígitos para completar o número`;
+    }
+
+    if (numbers.length > 11) {
+      return 'Número deve ter exatamente 11 dígitos';
+    }
+
+    // Validação do DDD
     const ddd = parseInt(numbers.slice(0, 2));
     if (ddd < 11 || ddd > 99) {
-      return 'DDD inválido';
+      return 'DDD inválido. Use um DDD entre 11 e 99';
     }
 
+    // Validação do nono dígito
     if (numbers[2] !== '9') {
-      return 'Número deve ser de celular (começar com 9)';
+      return 'Número deve ser de celular (terceiro dígito deve ser 9)';
     }
 
-    return null;
+    return null; // Número válido
   };
 
   // Função para capturar UTMs da URL
@@ -293,8 +328,8 @@ const WhatsAppPopup = ({ isOpen, onClose, originalWhatsAppUrl }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
+    
+    // Validação completa antes de prosseguir
     const newErrors = {};
 
     const phoneError = validatePhone(phone);
@@ -310,10 +345,13 @@ const WhatsAppPopup = ({ isOpen, onClose, originalWhatsAppUrl }) => {
 
     setErrors(newErrors);
 
+    // Se houver erros, não permite o submit
     if (Object.keys(newErrors).length > 0) {
-      setIsSubmitting(false);
-      return;
+      return; // Para aqui, não prossegue
     }
+
+    // Se chegou até aqui, pode prosseguir com o envio
+    setIsSubmitting(true);
 
     try {
       const utmParams = getUTMParams();
@@ -421,8 +459,15 @@ const WhatsAppPopup = ({ isOpen, onClose, originalWhatsAppUrl }) => {
               type="text"
               value={phone}
               onChange={handlePhoneChange}
+              onBlur={() => {
+                // Mostra erro se o campo estiver vazio ao perder o foco
+                if (!phone.trim()) {
+                  setErrors(prev => ({ ...prev, phone: 'Telefone é obrigatório' }));
+                }
+              }}
               placeholder="(24) 99999-9999"
               maxLength={15}
+              hasError={!!errors.phone}
             />
             {errors.phone && <ErrorMessage>{errors.phone}</ErrorMessage>}
           </InputGroup>
@@ -434,8 +479,13 @@ const WhatsAppPopup = ({ isOpen, onClose, originalWhatsAppUrl }) => {
               checked={lgpdAccepted}
               onChange={(e) => {
                 setLgpdAccepted(e.target.checked);
-                if (errors.lgpd) {
+                // Remove erro do LGPD quando o usuário aceita os termos
+                if (e.target.checked && errors.lgpd) {
                   setErrors(prev => ({ ...prev, lgpd: '' }));
+                }
+                // Mostra erro se desmarcar
+                if (!e.target.checked) {
+                  setErrors(prev => ({ ...prev, lgpd: 'Você deve aceitar os termos de privacidade' }));
                 }
               }}
             />
@@ -449,7 +499,7 @@ const WhatsAppPopup = ({ isOpen, onClose, originalWhatsAppUrl }) => {
           </CheckboxContainer>
           {errors.lgpd && <ErrorMessage>{errors.lgpd}</ErrorMessage>}
 
-          <SubmitButton type="submit" disabled={isSubmitting}>
+          <SubmitButton type="submit" disabled={isSubmitting || !isFormValid()}>
             {isSubmitting ? (
               'Enviando...'
             ) : (
