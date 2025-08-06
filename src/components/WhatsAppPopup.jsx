@@ -403,7 +403,7 @@ const WhatsAppPopup = ({ isOpen, onClose, originalWhatsAppUrl }) => {
 
                 <Form onSubmit={handleSubmit} id='contactForm'>
                     <InputGroup>
-                        <Label htmlFor="tel">Seu telefone *</Label>
+                        <Label htmlFor="tel">Seu WhatsApp *</Label>
                         <PhoneInput
                             id="tel"
                             type="text"
