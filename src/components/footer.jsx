@@ -412,27 +412,61 @@ const Footer = () => {
         };
     
         try {
-            const response = await fetch('https://hook.us1.make.com/t8b8er7tynfc1gxx8y9ulf2z6gyaymcw', { 
+            // URL do webhook - usa proxy em desenvolvimento, URL direta em produção
+            let webhookUrl = import.meta.env.DEV 
+                ? '/api/webhook' 
+                : 'https://unitycompany.app.n8n.cloud/webhook/kommo/leads-form-site';
+                
+            let response = await fetch(webhookUrl, { 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(formData),
             });
-    
-            const responseBody = await response.text(); // Obtém a resposta como texto
-            if (response.ok) {
-                alert('Dados enviados com sucesso!'); // Mensagem de sucesso
-                // Limpar os campos após o envio
+
+            // Se em desenvolvimento e der erro 404, tenta URL direta
+            if (!response.ok && response.status === 404 && import.meta.env.DEV) {
+                console.log('Webhook de teste não encontrado, tentando URL direta...');
+                webhookUrl = 'https://unitycompany.app.n8n.cloud/webhook/kommo/leads-form-site';
+                response = await fetch(webhookUrl, { 
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                });
+                
+                // Com no-cors, assumimos sucesso se não houver erro
+                alert('Dados enviados com sucesso!');
                 setName('');
                 setEmail('');
                 setTel('');
-    
-                // Redirecionar para o WhatsApp após sucesso
+                window.open('https://tintim.link/whatsapp/85d10962-4e7e-4f65-9a44-898be828e6fd/76dadedc-00f5-4a34-a4b0-c2052c540329', '_blank');
+                return;
+            }
+
+            const responseBody = await response.text();
+            if (response.ok) {
+                alert('Dados enviados com sucesso!');
+                setName('');
+                setEmail('');
+                setTel('');
                 window.open('https://tintim.link/whatsapp/85d10962-4e7e-4f65-9a44-898be828e6fd/76dadedc-00f5-4a34-a4b0-c2052c540329', '_blank');
             } else {
-                console.error('Erro de resposta:', responseBody); // Log do erro
-                alert('Erro ao enviar os dados: ' + responseBody); // Mensagem de erro
+                console.error('Erro de resposta:', responseBody);
+                
+                try {
+                    const errorData = JSON.parse(responseBody);
+                    if (errorData.code === 404 && errorData.message.includes('webhook')) {
+                        alert('⚠️ Webhook não está ativo no n8n.\n\nPara resolver:\n1. Abra o workflow no n8n\n2. Clique em "Execute Workflow"\n3. Tente enviar o formulário novamente');
+                    } else {
+                        alert('Erro ao enviar os dados: ' + errorData.message);
+                    }
+                } catch (parseError) {
+                    alert('Erro ao enviar os dados. Tente novamente.');
+                }
             }
         } catch (error) {
             console.error('Erro:', error);
