@@ -376,7 +376,7 @@ const Footer = () => {
     const generateUniqueId = () => {
         return `user_${Math.random().toString(36).substr(2, 9)}_${Date.now()}`;
     };
-    
+
     const getUTMs = () => {
         const params = new URLSearchParams(window.location.search);
         const utms = {
@@ -388,19 +388,19 @@ const Footer = () => {
         };
         return utms;
     };
-    
+
     const handleSubmit = async (e) => {
         e.preventDefault(); // Impede o comportamento padrão de recarregar a página
-    
+
         // Verifique se os dados estão preenchidos
         if (!name || !email || !tel) {
             alert('Por favor, preencha todos os campos.');
             return;
         }
-    
+
         // Gera um ID único para o usuário
         const uniqueId = generateUniqueId();
-    
+
         // Cria um objeto com todos os valores como strings
         const formData = {
             id: uniqueId, // Adiciona o ID único ao objeto
@@ -410,14 +410,14 @@ const Footer = () => {
             conversion_url: window.location.href, // Inclui a URL da conversão
             ...getUTMs(),                // Adiciona as UTM's capturadas
         };
-    
+
         try {
             // URL do webhook - usa proxy em desenvolvimento, URL direta em produção
-            let webhookUrl = import.meta.env.DEV 
-                ? '/api/webhook' 
-                : 'https://unitycompany.app.n8n.cloud/webhook/kommo/leads-form-site';
-                
-            let response = await fetch(webhookUrl, { 
+            let webhookUrl = import.meta.env.DEV
+                ? '/api/webhook'
+                : 'https://n8n.unitycompany.com.br/webhook/kommo/leads-form-site';
+
+            let response = await fetch(webhookUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -428,8 +428,8 @@ const Footer = () => {
             // Se em desenvolvimento e der erro 404, tenta URL direta
             if (!response.ok && response.status === 404 && import.meta.env.DEV) {
                 console.log('Webhook de teste não encontrado, tentando URL direta...');
-                webhookUrl = 'https://unitycompany.app.n8n.cloud/webhook/kommo/leads-form-site';
-                response = await fetch(webhookUrl, { 
+                webhookUrl = 'https://n8n.unitycompany.com.br/webhook/kommo/leads-form-site';
+                response = await fetch(webhookUrl, {
                     method: 'POST',
                     mode: 'no-cors',
                     headers: {
@@ -437,7 +437,7 @@ const Footer = () => {
                     },
                     body: JSON.stringify(formData),
                 });
-                
+
                 // Com no-cors, assumimos sucesso se não houver erro
                 alert('Dados enviados com sucesso!');
                 setName('');
@@ -456,7 +456,7 @@ const Footer = () => {
                 window.open('https://tintim.link/whatsapp/85d10962-4e7e-4f65-9a44-898be828e6fd/76dadedc-00f5-4a34-a4b0-c2052c540329', '_blank');
             } else {
                 console.error('Erro de resposta:', responseBody);
-                
+
                 try {
                     const errorData = JSON.parse(responseBody);
                     if (errorData.code === 404 && errorData.message.includes('webhook')) {
@@ -473,9 +473,9 @@ const Footer = () => {
             alert('Erro ao enviar os dados. Tente novamente.'); // Mensagem de erro
         }
     };
-    
-    
-    
+
+
+
 
     return (
         <>
@@ -538,7 +538,7 @@ const Footer = () => {
                         </form>
                     </StyledForm>
                 </StyledSectionTop>
-    
+
                 <StyledLinks>
                     <div>
                         <img
@@ -573,7 +573,7 @@ const Footer = () => {
                         <a href='https://br.pinterest.com/pousadaleange/' target='_blank' data-aos="fade-down" data-aos-delay="200"> <MdOutlineArrowRight /> Pinterest </a>
                     </div>
                 </StyledLinks>
-    
+
                 <StyledLocation>
                     <h1 data-aos="fade-down" data-aos-delay="200">Saiba onde estamos localizados</h1>
                     <div>
@@ -603,20 +603,20 @@ const Footer = () => {
                         ></iframe>
                     </div>
                 </StyledLocation>
-    
+
                 <StyledHR />
-    
+
                 <StyledPolitica>
                     <p>Todos os direitos reservados | <RiCopyrightLine /> 2024</p>
                     <a href='https://pousadaleange.com.br/politica-de-privacidade'>Termos de condições</a>
                     <p>Desenvolvido por <b><a href='https://alephsramos.com.br' target='_blank'>Aleph</a></b></p>
                 </StyledPolitica>
 
-                
+
             </StyledFooterContainer>
             <WhatsAppButton />
         </>
     );
-}    
+}
 
 export default Footer;
