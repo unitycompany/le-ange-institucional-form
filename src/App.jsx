@@ -166,7 +166,7 @@ function AppContent() {
 
     // Estado para controlar o popup de imagem
     const [showImagePopup, setShowImagePopup] = React.useState(false);
-    const [popupImageUrl, setPopupImageUrl] = React.useState('');
+    const [popupImageUrl, setPopupImageUrl] = React.useState('https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/df48f639-fb6c-4389-b35c-fd86fd344300/public');
 
     // Rotas onde o NavegationBar deve ser escondido
     const hiddenRoutes = ['/lpMar', '/lpSerra', '/politica-de-privacidade'];
