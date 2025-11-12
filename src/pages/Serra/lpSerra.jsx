@@ -767,6 +767,7 @@ const Serra = () => {
                 image2="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/22165283-94ec-4b61-f181-8275a74bad00/public"
                 image4="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/c1d96802-7777-4493-5799-9b927ea1de00/public"
                 image3="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/15251f10-d814-42ff-0b42-fc731ce2e700/public"
+                policyUrl="/src/pages/Politicas/politica-de-reservas-le-ange-serra.pdf"
             />
 
             <StyledSectionEspaco>

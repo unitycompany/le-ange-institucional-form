@@ -731,6 +731,7 @@ const Serra = () => {
                 image3="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/53ccc78d-ce67-48c5-ffde-4a0febd4a700/public"
                 image2="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/82ee632d-8532-412a-56ae-0076c6d6dc00/public"
                 image4="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/7da0d553-bf64-492e-fa8d-e125618a5400/public"
+                policyUrl="/src/pages/Politicas/politica-de-reservas-le-ange-mar.pdf"
             />
 
             <StyledSectionEspaco data-aos="fade-up" data-aos-delay="50">

@@ -64,6 +64,26 @@ const RegrasAll = styled.div`
             }
         }
 
+        & > a{
+            color: var(--color--blue);
+            font-family: var(--font--comfortaa);
+            font-size: 1rem;
+            font-weight: 400;
+            text-decoration: underline;
+            margin-top: -25px;
+            transition: all 0.2s ease;
+
+            &:hover{
+                color: var(--color--green);
+                text-decoration: none;
+            }
+
+            @media (max-width: 768px){
+                font-size: 0.9rem;
+                text-align: center;
+            }
+        }
+
         & > ol{
             margin-left: 25px;
             margin-top: 5px;
@@ -213,12 +233,17 @@ const RegrasAll = styled.div`
     }
 `
 
-const Regras = ({color, colorAlert, image1, image2, image3, image4}) => {
+const Regras = ({color, colorAlert, image1, image2, image3, image4, policyUrl}) => {
     return (
         <>
             <RegrasAll>
                 <div>
                     <h1 color={color}>A nossa pousada foi feita para você e o seu pet!</h1>
+                    {policyUrl && (
+                        <a href={policyUrl} target="_blank" rel="noopener noreferrer">
+                            Consulte a Política de Reservas completa
+                        </a>
+                    )}
                     <ol>
                         {/* <li>Apenas para pessoas <b>acompanhadas de seus pets;</b></li> */}
                         <li style={{background: "#CAD76620", border: "1px dashed #CAD76660"}}>Para pessoas que vêem o <b>pet como parte da família.</b></li>
