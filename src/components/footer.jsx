@@ -9,6 +9,7 @@ import React, { useRef, useState } from 'react';
 import 'aos/dist/aos.css';
 import WhatsAppButton from './Whatsapp';
 import { Link } from 'react-router-dom';
+import AlephsramosdevWidget from './AlephsramosdevWidget';
 
 const SubmitBtn = styled(motion.button)`
     font-family: inherit;
@@ -612,7 +613,7 @@ const Footer = () => {
                 <StyledPolitica>
                     <p>Todos os direitos reservados | <RiCopyrightLine /> 2024</p>
                     <a href='https://pousadaleange.com.br/politica-de-privacidade'>Termos de condições</a>
-                    <p>Desenvolvido por <b><a href='https://alephsramos.com.br' target='_blank'>Aleph</a></b></p>
+                    <AlephsramosdevWidget />
                 </StyledPolitica>
 
 
