@@ -505,7 +505,7 @@ const StyledAcomodaTexts = styled.div`
 
 const acomodacoesMar = [
     {
-        id: "Serra#suite1",
+        id: "Mar#suite1",
         title: "Suíte Superior 1",
         subtitle: "Pousada Le Ange Mar | Miguel Pereira - RJ",
         backgroundImage: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/82963de5-7929-4786-2305-e8ce47524400/public",
@@ -519,7 +519,7 @@ const acomodacoesMar = [
         ]
     },
     {
-        id: "Serra#suite2",
+        id: "Mar#suite2",
         title: "Suíte Standard 2",
         subtitle: "Pousada Le Ange Mar | Miguel Pereira - RJ",
         backgroundImage: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/b486213a-204f-465d-22ee-9e81990da100/public",
@@ -533,7 +533,7 @@ const acomodacoesMar = [
         ]
     },
     {
-        id: "Serra#suite3",
+        id: "Mar#suite3",
         title: "Suíte Superior 3",
         subtitle: "Pousada Le Ange Mar | Miguel Pereira - RJ",
         backgroundImage: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/ea1eea3b-3a33-4052-8ee1-977441df8e00/public",
@@ -547,7 +547,7 @@ const acomodacoesMar = [
         ]
     },
     {
-        id: "Serra#suite4",
+        id: "Mar#suite4",
         title: "Suíte Superior 4",
         subtitle: "Pousada Le Ange Mar | Miguel Pereira - RJ",
         backgroundImage: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/af6001e3-0b7e-4623-957d-f29e71a87800/public",
@@ -561,7 +561,7 @@ const acomodacoesMar = [
         ]
     },
     {
-        id: "Serra#suite5",
+        id: "Mar#suite5",
         title: "Suíte Superior 5",
         subtitle: "Pousada Le Ange Mar | Miguel Pereira - RJ",
         backgroundImage: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/df63bfef-4d75-423e-417b-6de58ef89900/public",
@@ -575,7 +575,7 @@ const acomodacoesMar = [
         ]
     },
     {
-        id: "Serra#suite6",
+        id: "Mar#suite6",
         title: "Suíte Standard 6",
         subtitle: "Pousada Le Ange Mar | Miguel Pereira - RJ",
         backgroundImage: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/d32c205b-b6e7-4144-8b53-1a11adea4200/public",
@@ -589,7 +589,7 @@ const acomodacoesMar = [
         ]
     },
     {
-        id: "Serra#suite7",
+        id: "Mar#suite7",
         title: "Suíte Master 7",
         subtitle: "Pousada Le Ange Mar | Miguel Pereira - RJ",
         backgroundImage: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/9c9a91c1-66f8-430c-571f-948fbcbda300/public",
@@ -603,7 +603,7 @@ const acomodacoesMar = [
         ]
     },
     {
-        id: "Serra#suite8",
+        id: "Mar#suite8",
         title: "Suíte Master 8",
         subtitle: "Pousada Le Ange Mar | Miguel Pereira - RJ",
         backgroundImage: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/29e157cc-f4a7-43f6-6815-0a6f4e6ded00/public",
