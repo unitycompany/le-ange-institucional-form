@@ -41,7 +41,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://pousadaleange.com.br/sitemap.xml
+Sitemap: https://form.pousadaleange.com.br/sitemap.xml
 
 # Crawl-delay para bots
 Crawl-delay: 1
