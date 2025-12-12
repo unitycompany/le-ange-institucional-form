@@ -10,6 +10,8 @@ import 'aos/dist/aos.css';
 import WhatsAppButton from './Whatsapp';
 import { Link } from 'react-router-dom';
 import AlephsramosdevWidget from './AlephsramosdevWidget';
+import politicaSerraPdf from '../pages/Politicas/politica-de-reservas-le-ange-serra.pdf';
+import politicaMarPdf from '../pages/Politicas/politica-de-reservas-le-ange-mar.pdf';
 
 const SubmitBtn = styled(motion.button)`
     font-family: inherit;
@@ -490,8 +492,8 @@ const Footer = () => {
                             As suas informações são mantidas em segurança e utilizadas apenas para entrar em contato. Entenda melhor como tratamos os seus dados pela nossa
                             <Link to="/politica-de-privacidade" rel="noopener noreferrer">política de privacidade</Link>.
                             Consulte também as nossas políticas de reservas: 
-                            <a href="/src/pages/Politicas/politica-de-reservas-le-ange-serra.pdf" target="_blank" rel="noopener noreferrer">Le Ange Serra</a> e 
-                            <a href="/src/pages/Politicas/politica-de-reservas-le-ange-mar.pdf" target="_blank" rel="noopener noreferrer">Le Ange Mar</a>.
+                            <a href={politicaSerraPdf} target="_blank" rel="noopener noreferrer">Le Ange Serra</a> e 
+                            <a href={politicaMarPdf} target="_blank" rel="noopener noreferrer">Le Ange Mar</a>.
                         </p>
                         <hr data-aos="fade-right" data-aos-delay="200" />
                         <div>

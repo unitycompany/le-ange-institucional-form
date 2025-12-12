@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { FaTimes, FaWhatsapp } from 'react-icons/fa';
 import { IoCloseOutline } from 'react-icons/io5';
+import politicaSerraPdf from '../pages/Politicas/politica-de-reservas-le-ange-serra.pdf';
+import politicaMarPdf from '../pages/Politicas/politica-de-reservas-le-ange-mar.pdf';
 
 const PopupOverlay = styled.div`
   position: fixed;
@@ -492,7 +494,7 @@ const WhatsAppPopup = ({ isOpen, onClose, originalWhatsAppUrl }) => {
             <CheckboxLabel htmlFor="lgpd">
               Aceito que meus dados sejam utilizados para contato conforme as{' '}
               <a
-                href="/politica-de-reservas-le-ange-serra.pdf"
+                href={politicaSerraPdf}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -500,7 +502,7 @@ const WhatsAppPopup = ({ isOpen, onClose, originalWhatsAppUrl }) => {
               </a>{' '}
               e{' '}
               <a
-                href="/politica-de-reservas-le-ange-mar.pdf"
+                href={politicaMarPdf}
                 target="_blank"
                 rel="noopener noreferrer"
               >
