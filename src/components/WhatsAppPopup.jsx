@@ -490,9 +490,21 @@ const WhatsAppPopup = ({ isOpen, onClose, originalWhatsAppUrl }) => {
               }}
             />
             <CheckboxLabel htmlFor="lgpd">
-              Aceito que meus dados sejam utilizados para contato conforme a{' '}
-              <a href="/politica-de-privacidade" target="_blank" rel="noopener noreferrer">
-                Política de Privacidade
+              Aceito que meus dados sejam utilizados para contato conforme as{' '}
+              <a
+                href="/src/pages/Politicas/politica-de-reservas-le-ange-serra.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Políticas de Reservas (Le Ange Serra)
+              </a>{' '}
+              e{' '}
+              <a
+                href="/src/pages/Politicas/politica-de-reservas-le-ange-mar.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                (Le Ange Mar)
               </a>{' '}
               e autorizo o contato via WhatsApp. *
             </CheckboxLabel>
