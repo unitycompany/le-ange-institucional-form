@@ -492,7 +492,7 @@ const WhatsAppPopup = ({ isOpen, onClose, originalWhatsAppUrl }) => {
             <CheckboxLabel htmlFor="lgpd">
               Aceito que meus dados sejam utilizados para contato conforme as{' '}
               <a
-                href="/src/pages/Politicas/politica-de-reservas-le-ange-serra.pdf"
+                href="/politica-de-reservas-le-ange-serra.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -500,7 +500,7 @@ const WhatsAppPopup = ({ isOpen, onClose, originalWhatsAppUrl }) => {
               </a>{' '}
               e{' '}
               <a
-                href="/src/pages/Politicas/politica-de-reservas-le-ange-mar.pdf"
+                href="/politica-de-reservas-le-ange-mar.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >
