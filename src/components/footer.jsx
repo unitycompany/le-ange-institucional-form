@@ -615,7 +615,6 @@ const Footer = () => {
                 <StyledPolitica>
                     <p>Todos os direitos reservados | <RiCopyrightLine /> 2024</p>
                     <a href='https://pousadaleange.com.br/politica-de-privacidade'>Termos de condições</a>
-                    <AlephsramosdevWidget />
                 </StyledPolitica>
 
 
