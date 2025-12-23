@@ -140,7 +140,7 @@ export default function Galeria({
                         <BsCalendarDate />
                         Fazer minha reserva agora!
                     </button>
-                    <span>*Ao entrar em contato, você concorda com a nossa <a href="" target="_blank">politica de privacidade</a>.</span>
+                    <span>*Ao entrar em contato, você concorda com a nossa <a href="/politica-de-privacidade" target="_blank" rel="noopener noreferrer">politica de privacidade</a>.</span>
                 </aside>
             </Content>
         </>

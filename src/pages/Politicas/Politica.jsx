@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Footer from '../../components/footer';
 
 const BREAKPOINT_MOBILE = 768;
 
@@ -327,6 +328,8 @@ const PoliticaDePrivacidade = () => {
           <em>Última atualização: 01 de Janeiro de 2025</em>
         </Paragraph>
       </ContentContainer>
+
+      <Footer />
     </All>
   );
 };

@@ -7,7 +7,7 @@ const FloatingButton = styled.button`
   position: fixed!important;
   z-index: 9999;
   right: 20px;
-  bottom: 20px;
+  bottom: 120px;
   width: 64px;
   height: 64px;
   display: flex;
@@ -19,6 +19,10 @@ const FloatingButton = styled.button`
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 173, 87, 0.3);
+
+  @media (max-width: 768px) {
+    bottom: 20px;
+  }
 
   &:hover {
     transform: scale(1.1);

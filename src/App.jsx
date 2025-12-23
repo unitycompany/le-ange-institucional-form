@@ -28,6 +28,8 @@ import PacotesLP from './pages/Pacotes/LP/lp';
 import Modal from './components/modal';
 import ModalAlert from './components/modalAlert';
 import ImagePopup from './components/ImagePopup';
+import BookingEngine from './components/bookingEngine';
+import { BOOKING_GENERAL_PROPERTIES } from './constants/bookingEngine';
 
 function ScrollToTop() {
     const { pathname } = useLocation();
@@ -161,6 +163,13 @@ function AnimatedRoutes() {
 function AppContent() {
     const location = useLocation();
 
+    const defaultPropertyId = React.useMemo(() => {
+        const pathname = location.pathname.toLowerCase();
+        if (pathname.includes('mar')) return 'mar';
+        if (pathname.includes('serra')) return 'serra';
+        return undefined;
+    }, [location.pathname]);
+
     // Ativa o interceptor global de WhatsApp
     useGlobalWhatsAppInterceptor();
 
@@ -205,6 +214,14 @@ function AppContent() {
         <>
             {!hideNav && <NavegationBar />}
             <AnimatedRoutes />
+
+            <BookingEngine
+                propertyOptions={BOOKING_GENERAL_PROPERTIES}
+                defaultPropertyId={defaultPropertyId}
+                showPropertySelector
+                ctaLabel="Buscar"
+                accentColor="var(--color--green)"
+            />
 
             {/* Popup de Imagem */}
             <ImagePopup

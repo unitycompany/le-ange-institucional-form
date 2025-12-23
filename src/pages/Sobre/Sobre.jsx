@@ -2,11 +2,14 @@ import React, { useEffect } from 'react';
 import WhatsAppButton from '../../components/Whatsapp';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import CustomButton from '../../components/button3';
 import SchemaMarkup from '../../components/SchemaMarkup';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Regras from '../../components/regras';
+import politicaSerraPdf from '../Politicas/politica-de-reservas-le-ange-serra.pdf';
+import politicaMarPdf from '../Politicas/politica-de-reservas-le-ange-mar.pdf';
 
 const SobreContainer = styled.section`
     width: 100%;
@@ -155,6 +158,118 @@ const Espaco = styled.div`
         height: 0;
     }
 `
+
+const PolicyHighlight = styled.section`
+    width: 100%;
+    max-width: 1280px;
+    left: 50%;
+    top: 0;
+    position: relative;
+    transform: translateX(-50%);
+    padding: 0 5%;
+    margin: 2vh 0 4vh;
+
+    @media (max-width: 768px){
+        margin: 1vh 0 3vh;
+    }
+`;
+
+const PolicyCard = styled.div`
+    width: 100%;
+    background: var(--color--black);
+    border-radius: 25px;
+    padding: 22px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+
+    @media (max-width: 768px){
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 18px;
+    }
+`;
+
+const PolicyText = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    h2{
+        font-family: var(--font--comfortaa);
+        color: var(--color--white);
+        font-weight: 400;
+        margin: 0;
+        line-height: 110%;
+        font-size: 1.2rem;
+    }
+
+    p{
+        margin: 0;
+        font-family: var(--font--avenir);
+        color: var(--color--white);
+        opacity: 0.85;
+        font-weight: 300;
+        line-height: 120%;
+        font-size: 0.95rem;
+    }
+`;
+
+const PolicyLinks = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    @media (max-width: 768px){
+        width: 100%;
+        justify-content: flex-start;
+    }
+`;
+
+const PolicyBtn = styled.a`
+    font-family: var(--font--comfortaa);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 10px 14px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: var(--color--black);
+    background: var(--color--white);
+    transition: transform 0.2s ease;
+    white-space: nowrap;
+
+    &:hover{
+        transform: translateY(-1px);
+    }
+`;
+
+const PolicyBtnSerra = styled(PolicyBtn)`
+    background: var(--color--green);
+`;
+
+const PolicyBtnMar = styled(PolicyBtn)`
+    background: var(--color--blue);
+`;
+
+const PolicyBtnPrivacy = styled(Link)`
+    font-family: var(--font--comfortaa);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 10px 14px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: var(--color--black);
+    background: var(--color--white);
+    transition: transform 0.2s ease;
+    white-space: nowrap;
+
+    &:hover{
+        transform: translateY(-1px);
+    }
+`;
 
 const UnidadeContainer = styled.section`
     width: 100%;
@@ -806,6 +921,26 @@ const Sobre = () => {
                     />
                 </div>
             </SobreContainer>
+
+            <PolicyHighlight>
+                <PolicyCard data-aos="fade-up" data-aos-delay="150">
+                    <PolicyText>
+                        <h2>Políticas e Privacidade</h2>
+                        <p>Consulte nossa política de privacidade e as políticas de reservas de cada unidade.</p>
+                    </PolicyText>
+                    <PolicyLinks>
+                        <PolicyBtnPrivacy to="/politica-de-privacidade" target="_blank" rel="noopener noreferrer">
+                            Privacidade
+                        </PolicyBtnPrivacy>
+                        <PolicyBtnSerra href={politicaSerraPdf} target="_blank" rel="noopener noreferrer">
+                            Política Serra
+                        </PolicyBtnSerra>
+                        <PolicyBtnMar href={politicaMarPdf} target="_blank" rel="noopener noreferrer">
+                            Política Mar
+                        </PolicyBtnMar>
+                    </PolicyLinks>
+                </PolicyCard>
+            </PolicyHighlight>
 
             <UnidadeContainer>
 
