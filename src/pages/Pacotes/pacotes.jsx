@@ -13,6 +13,7 @@ import { FaArrowRight } from "react-icons/fa6";
 import { FaArrowLeft } from "react-icons/fa";
 import { Helmet } from "react-helmet";
 import SchemaMarkup from "../../components/SchemaMarkup";
+import { sortByChrono } from "../../utils/dateSort";
 
 const Container = styled.div`
   width: 100%;
@@ -130,8 +131,20 @@ const Pacotes = () => {
               : pacote.categorias === categoria.key
           );
 
+          const pacotesOrdenados = sortByChrono(pacotesFiltrados, (pacote) =>
+            pacote?.datas ??
+            pacote?.dateRange ??
+            pacote?.data ??
+            pacote?.date ??
+            pacote?.periodo ??
+            pacote?.inicio ??
+            pacote?.startDate ??
+            pacote?.dataInicio ??
+            pacote?.data_inicial
+          );
+
           // Se não há pacotes para esta categoria, não renderiza nada
-          if (pacotesFiltrados.length === 0) {
+          if (pacotesOrdenados.length === 0) {
             return null;
           }
 
@@ -161,7 +174,7 @@ const Pacotes = () => {
                     480: { slidesPerView: 1, spaceBetween: 10 },
                   }}
                 >
-                  {pacotesFiltrados.map((pacote) => (
+                  {pacotesOrdenados.map((pacote) => (
                     <StyledSwiperSlide key={pacote.id}>
                       <CardPacote pacote={pacote} />
                     </StyledSwiperSlide>

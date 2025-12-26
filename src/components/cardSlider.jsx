@@ -8,6 +8,7 @@ import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import IconButton from './button4';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { sortByChrono } from '../utils/dateSort';
 
 // Importação dos ícones necessários
 import { FaUtensils, FaRegCreditCard, FaPaw, FaCheck } from 'react-icons/fa';
@@ -156,17 +157,18 @@ const Price = styled.p`
 `;
 
 const EventCardCarousel = ({ events = [] }) => {
+  const sortedEvents = sortByChrono(events, (event) => event?.dateRange ?? event?.date ?? event?.data);
   const [loadedImages, setLoadedImages] = useState(new Set([0, 1, 2])); // Carrega as 3 primeiras por padrão
   const swiperRef = useRef(null);
 
   const handleSlideChange = useCallback((swiper) => {
     const currentIndex = swiper.realIndex;
-    const nextIndex = (currentIndex + 1) % events.length;
-    const prevIndex = currentIndex === 0 ? events.length - 1 : currentIndex - 1;
+    const nextIndex = (currentIndex + 1) % sortedEvents.length;
+    const prevIndex = currentIndex === 0 ? sortedEvents.length - 1 : currentIndex - 1;
 
     // Carrega a imagem atual e as adjacentes silenciosamente
     setLoadedImages(prev => new Set([...prev, currentIndex, nextIndex, prevIndex]));
-  }, [events.length]);
+  }, [sortedEvents.length]);
 
   // Preload das imagens de forma assíncrona
   const preloadImage = useCallback((src, index) => {
@@ -191,7 +193,7 @@ const EventCardCarousel = ({ events = [] }) => {
         swiperRef.current = swiper;
         // Preload das primeiras imagens de forma assíncrona
         setTimeout(() => {
-          events.forEach((event, index) => {
+          sortedEvents.forEach((event, index) => {
             if (index < 3) { // Carrega as 3 primeiras imediatamente
               preloadImage(event.image, index);
             }
@@ -204,8 +206,8 @@ const EventCardCarousel = ({ events = [] }) => {
         0: { slidesPerView: 1, spaceBetween: 0 }, // Exibe 1 card no mobile
       }}
     >
-      {events.map((event, index) => (
-        <SwiperSlide key={index}>
+      {sortedEvents.map((event, index) => (
+        <SwiperSlide key={event.id ?? index}>
           <CardContainer data-aos="fade-up" data-aos-delay="0">
             <CardImage
               src={event.image}
