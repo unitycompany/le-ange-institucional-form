@@ -224,12 +224,12 @@ function AppContent() {
             />
 
             {/* Popup de Imagem */}
-            <ImagePopup
+            {/* <ImagePopup
                 show={showImagePopup}
                 onClose={handleClosePopup}
                 imageUrl={popupImageUrl}
                 imageAlt="Popup Promocional"
-            />
+            /> */}
 
             {/* Adicione o SpeedInsights aqui */}
             <SpeedInsights />
