@@ -231,7 +231,7 @@ const Modal = () => {
                             <p>3 Diárias</p>
                         </div>
                     </div>
-                    <button onClick={() => window.location.href = 'https://tintim.link/whatsapp/85d10962-4e7e-4f65-9a44-898be828e6fd/c3b54b40-7566-4d71-8130-55158bcb13d7'}>
+                    <button onClick={() => window.location.href = 'https://wa.me/5521994230871?text=Ol%C3%A1%2C%20Pousada%20Le%20Ange!%20Visitei%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20pousada'}>
                         <span>RESGATAR MINHA PROMOÇÃO</span>
                     </button>
                     <button onClick={() => { setShowModal(false); setShowMini(true); }}>

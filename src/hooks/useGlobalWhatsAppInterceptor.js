@@ -8,11 +8,11 @@ export const useGlobalWhatsAppInterceptor = () => {
     useEffect(() => {
         const interceptWhatsAppClicks = (event) => {
             const target = event.target;
-            const link = target.closest('a[href*="whatsapp"], a[href*="tintim.link"]');
-            const button = target.closest('button[id="clickwpp"], [onclick*="whatsapp"], [onclick*="tintim.link"]');
+            const link = target.closest('a[href*="whatsapp"], a[href*="wa.me"]');
+            const button = target.closest('button[id="clickwpp"], [onclick*="whatsapp"], [onclick*="wa.me"]');
 
             // Intercepta links do WhatsApp
-            if (link && (link.href.includes('whatsapp') || link.href.includes('tintim.link'))) {
+            if (link && (link.href.includes('whatsapp') || link.href.includes('wa.me'))) {
                 event.preventDefault();
                 event.stopPropagation();
                 handleWhatsAppClick(event, link.href);
@@ -22,7 +22,7 @@ export const useGlobalWhatsAppInterceptor = () => {
             // Intercepta botões do WhatsApp
             if (button) {
                 const onclick = button.getAttribute('onclick');
-                if (onclick && (onclick.includes('whatsapp') || onclick.includes('tintim.link'))) {
+                if (onclick && (onclick.includes('whatsapp') || onclick.includes('wa.me'))) {
                     event.preventDefault();
                     event.stopPropagation();
                     // Extrai a URL do onclick

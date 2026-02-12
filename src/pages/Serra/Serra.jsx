@@ -753,7 +753,7 @@ const Serra = () => {
                         hoverBorderColor="var(--color--green)"
                         hoverColor="var(--color--white)"
                         hoverIconColor="var(--color--white)"
-                        onClick={() => window.open("https://tintim.link/whatsapp/85d10962-4e7e-4f65-9a44-898be828e6fd/76dadedc-00f5-4a34-a4b0-c2052c540329", "_blank")}
+                        onClick={() => window.open("https://wa.me/5521994230871?text=Ol%C3%A1%2C%20Pousada%20Le%20Ange!%20Visitei%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20pousada", "_blank")}
                     />
                     <IdadeCrianca>*Idade miníma para hospedagem 13 anos, mesmo que acompanhado dos pais</IdadeCrianca>
                 </StyledHomeTexts>
@@ -788,7 +788,7 @@ const Serra = () => {
                             borderColor="var(--color--white)"
                             onClick={() => {
                                 window.open(
-                                    'https://tintim.link/whatsapp/85d10962-4e7e-4f65-9a44-898be828e6fd/76dadedc-00f5-4a34-a4b0-c2052c540329',
+                                    'https://wa.me/5521994230871?text=Ol%C3%A1%2C%20Pousada%20Le%20Ange!%20Visitei%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20pousada',
                                     '_blank'
                                 );
                             }}
@@ -816,7 +816,7 @@ const Serra = () => {
                     idBtn="clickwpp"
                     backgroundColor="var(--color--green)"
                     text="Fazer minha reserva!"
-                    onClick={() => window.open("https://tintim.link/whatsapp/85d10962-4e7e-4f65-9a44-898be828e6fd/76dadedc-00f5-4a34-a4b0-c2052c540329", "_blank")}
+                    onClick={() => window.open("https://wa.me/5521994230871?text=Ol%C3%A1%2C%20Pousada%20Le%20Ange!%20Visitei%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20pousada", "_blank")}
                 />
             </StyledButtonCenter>
 

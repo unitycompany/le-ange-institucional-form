@@ -446,7 +446,7 @@ const Footer = () => {
                 setName('');
                 setEmail('');
                 setTel('');
-                window.open('https://tintim.link/whatsapp/85d10962-4e7e-4f65-9a44-898be828e6fd/76dadedc-00f5-4a34-a4b0-c2052c540329', '_blank');
+                window.open('https://wa.me/5521994230871?text=Ol%C3%A1%2C%20Pousada%20Le%20Ange!%20Visitei%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20pousada', '_blank');
                 return;
             }
 
@@ -456,7 +456,7 @@ const Footer = () => {
                 setName('');
                 setEmail('');
                 setTel('');
-                window.open('https://tintim.link/whatsapp/85d10962-4e7e-4f65-9a44-898be828e6fd/76dadedc-00f5-4a34-a4b0-c2052c540329', '_blank');
+                window.open('https://wa.me/5521994230871?text=Ol%C3%A1%2C%20Pousada%20Le%20Ange!%20Visitei%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20pousada', '_blank');
             } else {
                 console.error('Erro de resposta:', responseBody);
 
@@ -568,8 +568,8 @@ const Footer = () => {
                     </div>
                     <div>
                         <h2 data-aos="fade-up" data-aos-delay="400">Central de reserva</h2>
-                        <a href="https://tintim.link/whatsapp/85d10962-4e7e-4f65-9a44-898be828e6fd/76dadedc-00f5-4a34-a4b0-c2052c540329" target='_blank' data-aos="fade-up" data-aos-delay="100"> <MdOutlineArrowRight /> WhatsApp </a>
-                        <a href="https://tintim.link/whatsapp/85d10962-4e7e-4f65-9a44-898be828e6fd/76dadedc-00f5-4a34-a4b0-c2052c540329" target='_blank' data-aos="fade-down" data-aos-delay="150"> <MdOutlineArrowRight /> +55 (21) 99423-0871 </a>
+                        <a href="https://wa.me/5521994230871?text=Ol%C3%A1%2C%20Pousada%20Le%20Ange!%20Visitei%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20pousada" target='_blank' data-aos="fade-up" data-aos-delay="100"> <MdOutlineArrowRight /> WhatsApp </a>
+                        <a href="https://wa.me/5521994230871?text=Ol%C3%A1%2C%20Pousada%20Le%20Ange!%20Visitei%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20pousada" target='_blank' data-aos="fade-down" data-aos-delay="150"> <MdOutlineArrowRight /> +55 (21) 99423-0871 </a>
                         <a href='mailto:pousadaleange@gmail.com' target='_blank' data-aos="fade-up" data-aos-delay="200"> <MdOutlineArrowRight /> pousadaleange@gmail.com </a>
                     </div>
                     <div>

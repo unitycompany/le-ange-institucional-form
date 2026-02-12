@@ -654,7 +654,7 @@ const Eventos = () => {
                     <Button
                         idBtn="clickwpp"
                         data-aos="fade-up" data-aos-delay="300"
-                        onClick={() => window.open("https://tintim.link/whatsapp/85d10962-4e7e-4f65-9a44-898be828e6fd/76dadedc-00f5-4a34-a4b0-c2052c540329", "_blank")}
+                        onClick={() => window.open("https://wa.me/5521994230871?text=Ol%C3%A1%2C%20Pousada%20Le%20Ange!%20Visitei%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20pousada", "_blank")}
                         text="Fazer meu evento"
                         backgroundColor="var(--color--green)"
                     />
@@ -690,7 +690,7 @@ const Eventos = () => {
                             <Button
                                 idBtn="clickwpp"
                                 backgroundColor="var(--color--green)"
-                                onClick={() => window.open("https://tintim.link/whatsapp/85d10962-4e7e-4f65-9a44-898be828e6fd/76dadedc-00f5-4a34-a4b0-c2052c540329", "_blank")}
+                                onClick={() => window.open("https://wa.me/5521994230871?text=Ol%C3%A1%2C%20Pousada%20Le%20Ange!%20Visitei%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20pousada", "_blank")}
                                 text="Fazer reserva"
                             />
                         </div>
@@ -702,7 +702,7 @@ const Eventos = () => {
                             </p>
                             <Button
                                 idBtn="clickwpp"
-                                onClick={() => window.open("https://tintim.link/whatsapp/85d10962-4e7e-4f65-9a44-898be828e6fd/76dadedc-00f5-4a34-a4b0-c2052c540329", "_blank")}
+                                onClick={() => window.open("https://wa.me/5521994230871?text=Ol%C3%A1%2C%20Pousada%20Le%20Ange!%20Visitei%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20pousada", "_blank")}
                                 text="Fazer reserva"
                             />
                         </div>
@@ -748,7 +748,7 @@ const Eventos = () => {
                         idBtn="clickwpp"
                         text="Fazer reserva"
                         backgroundColor="var(--color--green)"
-                        onClick={() => window.open("https://tintim.link/whatsapp/85d10962-4e7e-4f65-9a44-898be828e6fd/76dadedc-00f5-4a34-a4b0-c2052c540329", "_blank")}
+                        onClick={() => window.open("https://wa.me/5521994230871?text=Ol%C3%A1%2C%20Pousada%20Le%20Ange!%20Visitei%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20pousada", "_blank")}
                     />
                     <div>
                         <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/4129a834-fd9a-42db-4770-46bcaae2c200/public" alt='foto do casamento' data-aos="fade-up" data-aos-delay="100" />
@@ -793,7 +793,7 @@ const Eventos = () => {
                         idBtn="clickwpp"
                         text="Fazer reserva"
                         backgroundColor="var(--color--green)"
-                        onClick={() => window.open("https://tintim.link/whatsapp/85d10962-4e7e-4f65-9a44-898be828e6fd/76dadedc-00f5-4a34-a4b0-c2052c540329", "_blank")}
+                        onClick={() => window.open("https://wa.me/5521994230871?text=Ol%C3%A1%2C%20Pousada%20Le%20Ange!%20Visitei%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20pousada", "_blank")}
                     />
                     <div>
                         <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/e2fda94b-3aeb-4561-b4ad-688ff898ee00/public" alt='foto do casamento' data-aos="fade-up" data-aos-delay="100" />
