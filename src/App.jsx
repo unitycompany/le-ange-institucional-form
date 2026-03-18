@@ -4,6 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import { AnimatePresence, motion } from 'framer-motion';
 import { Analytics } from "@vercel/analytics/react"
 import { useGlobalWhatsAppInterceptor } from './hooks/useGlobalWhatsAppInterceptor';
+import { isWhatsAppUrl, redirectToBookingEngine } from './utils/bookingRedirect';
 
 import './styles/App.css';
 import './styles/global.css';
@@ -162,6 +163,27 @@ function AnimatedRoutes() {
 
 function AppContent() {
     const location = useLocation();
+
+    React.useEffect(() => {
+        if (typeof window === 'undefined') return undefined;
+
+        const originalOpen = window.open.bind(window);
+
+        window.open = (url, target, features) => {
+            const destinationUrl = typeof url === 'string' ? url : String(url ?? '');
+
+            if (isWhatsAppUrl(destinationUrl)) {
+                redirectToBookingEngine({ target: target || '_self' });
+                return null;
+            }
+
+            return originalOpen(url, target, features);
+        };
+
+        return () => {
+            window.open = originalOpen;
+        };
+    }, []);
 
     const defaultPropertyId = React.useMemo(() => {
         const pathname = location.pathname.toLowerCase();
