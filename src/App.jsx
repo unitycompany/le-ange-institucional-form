@@ -30,6 +30,7 @@ import Modal from './components/modal';
 import ModalAlert from './components/modalAlert';
 import ImagePopup from './components/ImagePopup';
 import BookingEngine from './components/bookingEngine';
+import EmergencyBookingPopup from './components/EmergencyBookingPopup';
 import { BOOKING_GENERAL_PROPERTIES } from './constants/bookingEngine';
 
 function ScrollToTop() {
@@ -163,6 +164,30 @@ function AnimatedRoutes() {
 
 function AppContent() {
     const location = useLocation();
+    const [showEmergencyPopup, setShowEmergencyPopup] = useState(false);
+
+    useEffect(() => {
+        if (typeof window === 'undefined') return undefined;
+
+        const storageKey = 'leange_emergency_whatsapp_alert_shown';
+
+        try {
+            if (window.sessionStorage.getItem(storageKey) === '1') {
+                return undefined;
+            }
+
+            const timer = window.setTimeout(() => {
+                setShowEmergencyPopup(true);
+                window.sessionStorage.setItem(storageKey, '1');
+            }, 400);
+
+            return () => window.clearTimeout(timer);
+        } catch {
+            // Fallback para cenarios sem acesso ao sessionStorage
+            setShowEmergencyPopup(true);
+            return undefined;
+        }
+    }, []);
 
     React.useEffect(() => {
         if (typeof window === 'undefined') return undefined;
@@ -243,6 +268,11 @@ function AppContent() {
                 showPropertySelector
                 ctaLabel="Buscar"
                 accentColor="var(--color--green)"
+            />
+
+            <EmergencyBookingPopup
+                isOpen={showEmergencyPopup}
+                onClose={() => setShowEmergencyPopup(false)}
             />
 
             {/* Popup de Imagem */}
