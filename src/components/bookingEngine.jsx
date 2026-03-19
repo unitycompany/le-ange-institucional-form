@@ -308,7 +308,7 @@ const BookingEngine = ({
     const handleSubmit = (event) => {
         event.preventDefault();
         if (!searchUrl) return;
-        openExternal(searchUrl, { target: '_self' });
+        openExternal(searchUrl);
     };
 
     const handleMobileClick = () => {
@@ -317,7 +317,7 @@ const BookingEngine = ({
         
         const baseUrl = property.baseUrl || DEFAULT_BASE_URL;
         const url = `${baseUrl}?q=${property.q}`;
-        openExternal(url, { target: '_self' });
+        openExternal(url);
     };
 
     const canSubmit = Boolean(searchUrl);

@@ -4,7 +4,6 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import { AnimatePresence, motion } from 'framer-motion';
 import { Analytics } from "@vercel/analytics/react"
 import { useGlobalWhatsAppInterceptor } from './hooks/useGlobalWhatsAppInterceptor';
-import { isWhatsAppUrl, redirectToBookingEngine } from './utils/bookingRedirect';
 
 import './styles/App.css';
 import './styles/global.css';
@@ -30,7 +29,6 @@ import Modal from './components/modal';
 import ModalAlert from './components/modalAlert';
 import ImagePopup from './components/ImagePopup';
 import BookingEngine from './components/bookingEngine';
-import EmergencyBookingPopup from './components/EmergencyBookingPopup';
 import { BOOKING_GENERAL_PROPERTIES } from './constants/bookingEngine';
 
 function ScrollToTop() {
@@ -164,51 +162,6 @@ function AnimatedRoutes() {
 
 function AppContent() {
     const location = useLocation();
-    const [showEmergencyPopup, setShowEmergencyPopup] = useState(false);
-
-    useEffect(() => {
-        if (typeof window === 'undefined') return undefined;
-
-        const storageKey = 'leange_emergency_whatsapp_alert_shown';
-
-        try {
-            if (window.sessionStorage.getItem(storageKey) === '1') {
-                return undefined;
-            }
-
-            const timer = window.setTimeout(() => {
-                setShowEmergencyPopup(true);
-                window.sessionStorage.setItem(storageKey, '1');
-            }, 400);
-
-            return () => window.clearTimeout(timer);
-        } catch {
-            // Fallback para cenarios sem acesso ao sessionStorage
-            setShowEmergencyPopup(true);
-            return undefined;
-        }
-    }, []);
-
-    React.useEffect(() => {
-        if (typeof window === 'undefined') return undefined;
-
-        const originalOpen = window.open.bind(window);
-
-        window.open = (url, target, features) => {
-            const destinationUrl = typeof url === 'string' ? url : String(url ?? '');
-
-            if (isWhatsAppUrl(destinationUrl)) {
-                redirectToBookingEngine({ target: target || '_self' });
-                return null;
-            }
-
-            return originalOpen(url, target, features);
-        };
-
-        return () => {
-            window.open = originalOpen;
-        };
-    }, []);
 
     const defaultPropertyId = React.useMemo(() => {
         const pathname = location.pathname.toLowerCase();
@@ -268,11 +221,6 @@ function AppContent() {
                 showPropertySelector
                 ctaLabel="Buscar"
                 accentColor="var(--color--green)"
-            />
-
-            <EmergencyBookingPopup
-                isOpen={showEmergencyPopup}
-                onClose={() => setShowEmergencyPopup(false)}
             />
 
             {/* Popup de Imagem */}

@@ -1,5 +1,4 @@
 import { useState, useCallback } from 'react';
-import { redirectToBookingEngine } from '../utils/bookingRedirect';
 
 export const useWhatsAppPopup = () => {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -19,8 +18,8 @@ export const useWhatsAppPopup = () => {
     const handleWhatsAppClick = useCallback((e, whatsappUrl) => {
         e.preventDefault();
         e.stopPropagation();
-        redirectToBookingEngine({ target: '_self' });
-    }, []);
+        openWhatsAppPopup(whatsappUrl);
+    }, [openWhatsAppPopup]);
 
     return {
         isPopupOpen,

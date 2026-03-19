@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { redirectToBookingEngine } from "../utils/bookingRedirect";
 
 const ModalAll = styled.div`
     position: fixed;
@@ -232,7 +231,7 @@ const Modal = () => {
                             <p>3 Diárias</p>
                         </div>
                     </div>
-                    <button onClick={() => redirectToBookingEngine({ target: '_self' })}>
+                    <button onClick={() => window.location.href = 'https://tintim.link/whatsapp/85d10962-4e7e-4f65-9a44-898be828e6fd/c3b54b40-7566-4d71-8130-55158bcb13d7'}>
                         <span>RESGATAR MINHA PROMOÇÃO</span>
                     </button>
                     <button onClick={() => { setShowModal(false); setShowMini(true); }}>
