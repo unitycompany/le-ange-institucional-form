@@ -30,6 +30,7 @@ import ModalAlert from './components/modalAlert';
 import ImagePopup from './components/ImagePopup';
 import BookingEngine from './components/bookingEngine';
 import { BOOKING_GENERAL_PROPERTIES } from './constants/bookingEngine';
+import { FEATURE_FLAGS } from './config/featureFlags';
 
 function ScrollToTop() {
     const { pathname } = useLocation();
@@ -215,13 +216,15 @@ function AppContent() {
             {!hideNav && <NavegationBar />}
             <AnimatedRoutes />
 
-            <BookingEngine
-                propertyOptions={BOOKING_GENERAL_PROPERTIES}
-                defaultPropertyId={defaultPropertyId}
-                showPropertySelector
-                ctaLabel="Buscar"
-                accentColor="var(--color--green)"
-            />
+            {FEATURE_FLAGS.BOOKING_ENGINE_ENABLED && (
+                <BookingEngine
+                    propertyOptions={BOOKING_GENERAL_PROPERTIES}
+                    defaultPropertyId={defaultPropertyId}
+                    showPropertySelector
+                    ctaLabel="Buscar"
+                    accentColor="var(--color--green)"
+                />
+            )}
 
             {/* Popup de Imagem */}
             {/* <ImagePopup
